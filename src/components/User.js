@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateTutorial, deleteTutorial } from "../actions/tutorials";
-import TutorialDataService from "../services/TutorialService";
+import { updateUser, deleteUser } from "../actions/users";
+import TutorialDataService from "../services/UserService";
 
 const Tutorial = (props) => {
 
@@ -44,7 +44,7 @@ const Tutorial = (props) => {
           published: status
         };
     
-        dispatch(updateTutorial(currentTutorial.id, data))
+        dispatch(updateUser(currentTutorial.id, data))
           .then(response => {
             console.log(response);
     
@@ -57,7 +57,7 @@ const Tutorial = (props) => {
       };
 
       const updateContent = () => {
-        dispatch(updateTutorial(currentTutorial.id, currentTutorial))
+        dispatch(updateUser(currentTutorial.id, currentTutorial))
           .then(response => {
             console.log(response);
     
@@ -69,7 +69,7 @@ const Tutorial = (props) => {
       };
     
       const removeTutorial = () => {
-        dispatch(deleteTutorial(currentTutorial.id))
+        dispatch(deleteUser(currentTutorial.id))
           .then(() => {
             props.history.push("/tutorials");
           })
